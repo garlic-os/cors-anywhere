@@ -11,17 +11,18 @@ export interface CreateServerOptions {
     res: http.ServerResponse,
     location: Location
   ) => void;
-  getProxyForUrl: typeof proxyFromEnv.getProxyForUrl;
-  maxRedirects: number;
-  originBlacklist: string[];
-  originWhitelist: string[];
-  checkRateLimit: (origin: string) => string | undefined;
-  redirectSameOrigin: boolean;
+  getProxyForUrl?: typeof proxyFromEnv.getProxyForUrl;
+  maxRedirects?: number;
+  originBlacklist?: string[];
+  originWhitelist?: string[];
+  checkRateLimit?: (origin: string) => string | undefined;
+  redirectSameOrigin?: boolean;
   requireHeader?: string | string[];
-  removeHeaders: string[];
-  setHeaders: {[key: string]: string};
+  removeHeaders?: string[];
+  setHeaders?: {[key: string]: string};
   corsMaxAge?: number;
-  helpFile: string;
+  helpFile?: string;
+}
 }
 
 export function createServer(options?: CreateServerOptions): http.Server | https.Server;
