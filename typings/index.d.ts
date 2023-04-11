@@ -3,9 +3,8 @@ import type * as https from 'https';
 import type * as httpProxy from 'http-proxy';
 import * as proxyFromEnv from 'proxy-from-env';
 
-export interface CreateServerOptions {
+export interface CreateServerOptionsHTTP {
   httpProxyOptions?: httpProxy.ServerOptions;
-  httpsOptions?: https.ServerOptions;
   handleInitialRequest?: (
     req: http.IncomingMessage,
     res: http.ServerResponse,
@@ -23,6 +22,10 @@ export interface CreateServerOptions {
   corsMaxAge?: number;
   helpFile?: string;
 }
+
+export interface CreateServerOptionsHTTPS extends CreateServerOptionsHTTP {
+  httpsOptions?: https.ServerOptions;
 }
 
-export function createServer(options?: CreateServerOptions): http.Server | https.Server;
+export function createServer(options?: CreateServerOptionsHTTP): http.Server;
+export function createServer(options?: CreateServerOptionsHTTPS): https.Server;
