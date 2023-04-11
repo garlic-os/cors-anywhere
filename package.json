@@ -20,6 +20,7 @@
     "heroku"
   ],
   "main": "./lib/cors-anywhere.js",
+  "types": "./typings/index.d.ts",
   "files": [
     "lib/",
     "test/",
